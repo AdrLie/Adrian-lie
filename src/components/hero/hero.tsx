@@ -1,18 +1,20 @@
-'use client'
+"use client";
 
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
+import Image from "next/image";
 
 interface HeroProps {
   isLoaded: boolean;
   scrollToSection: (sectionId: string) => void;
 }
 
-export  function Hero({ isLoaded, scrollToSection }: HeroProps) {
+export function Hero({ isLoaded, scrollToSection }: HeroProps) {
   return (
     <section id="hero" className="pt-32 pb-24 md:pt-40 md:pb-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+          {/* Text Content */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={isLoaded ? { opacity: 1 } : { opacity: 0 }}
@@ -25,7 +27,15 @@ export  function Hero({ isLoaded, scrollToSection }: HeroProps) {
               transition={{ delay: 0.2, duration: 0.8 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight"
             >
-              Hi, I&apos;m <span className="text-emerald-600">Adrian Lie</span>
+              <span className="text-emerald-600">Adrian Lie</span>
+            </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="text-2xl md:text-2xl lg:text-3xl font-bold tracking-tight"
+            >
+              <span className="text-emerald-900">Fullstack Developer</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -33,7 +43,9 @@ export  function Hero({ isLoaded, scrollToSection }: HeroProps) {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-xl text-zinc-600 max-w-lg"
             >
-              A passionate developer creating beautiful, functional, and user-friendly digital experiences.
+              I&aposm a creative developer with over 3 years of experience making
+              modern websites and apps. I enjoy building easy-to-use interfaces
+              and reliable backend systems.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -84,7 +96,25 @@ export  function Hero({ isLoaded, scrollToSection }: HeroProps) {
               </a>
             </motion.div>
           </motion.div>
+
+          {/* Photo Section */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={
+              isLoaded ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }
+            }
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="md:w-1/2 flex justify-center"
+          >
+            <Image
+              src="/images/profile-photo.png"
+              alt="Adrian Lie"
+              className="w-72 h-72 object-cover rounded-full shadow-lg border-4 border-emerald-600"
+            />
+          </motion.div>
         </div>
+
+        {/* Scroll Down */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -92,7 +122,7 @@ export  function Hero({ isLoaded, scrollToSection }: HeroProps) {
           className="flex justify-center mt-16"
         >
           <button
-            onClick={() => scrollToSection("about")}
+            onClick={() => scrollToSection("skills")}
             className="flex flex-col items-center text-zinc-500 hover:text-emerald-600 transition-colors"
           >
             <span className="text-sm font-medium mb-2">Scroll down</span>

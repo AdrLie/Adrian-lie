@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 interface SkillsProps {
   fadeIn: {
@@ -18,6 +19,8 @@ interface SkillsProps {
 }
 
 export function Skills({ fadeIn }: SkillsProps) {
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  
   const skills = [
     "JavaScript",
     "Python",
@@ -29,7 +32,6 @@ export function Skills({ fadeIn }: SkillsProps) {
     "HTML5",
     "CSS3",
     "Git",
-    "Figma",
     "Responsive Design",
     "Vue js",
     "ERPNext",
@@ -58,17 +60,50 @@ export function Skills({ fadeIn }: SkillsProps) {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {skills.map((skill, index) => (
             <motion.div
               key={skill}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow text-center"
+              transition={{ delay: index * 0.05, duration: 0.4 }}
+              whileHover={{ 
+                y: -5, 
+                scale: 1.03,
+                boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+              }}
+              onHoverStart={() => setHoveredSkill(skill)}
+              onHoverEnd={() => setHoveredSkill(null)}
+              className={`bg-white rounded-xl p-6 shadow-sm border border-zinc-100 transition-all duration-300 relative overflow-hidden ${
+                hoveredSkill === skill ? 'border-emerald-200' : ''
+              }`}
             >
-              <h3 className="font-medium text-lg">{skill}</h3>
+              {/* Animated background effect on hover */}
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-br from-emerald-50 to-transparent opacity-0 transition-opacity duration-300"
+                animate={{ opacity: hoveredSkill === skill ? 0.6 : 0 }}
+              />
+              
+              {/* Animated accent line */}
+              <motion.div 
+                className="absolute top-0 left-0 h-1 bg-emerald-500 w-0"
+                animate={{ width: hoveredSkill === skill ? '100%' : '0%' }}
+                transition={{ duration: 0.3 }}
+              />
+              
+              <div className="relative z-10 flex items-center justify-center h-full">
+                <motion.h3 
+                  className="font-medium text-lg text-center"
+                  animate={{ 
+                    scale: hoveredSkill === skill ? 1.05 : 1,
+                    color: hoveredSkill === skill ? '#059669' : '#18181b'
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {skill}
+                </motion.h3>
+              </div>
             </motion.div>
           ))}
         </div>

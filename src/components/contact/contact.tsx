@@ -75,7 +75,7 @@ export function Contact({ fadeIn }: ContactProps) {
                 <div>
                   <h4 className="font-medium">LinkedIn</h4>
                   <a
-                    href="https://github.com/AdrLie"
+                    href="https://www.linkedin.com/in/adrian-lie"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-zinc-600 hover:text-emerald-600 transition-colors"
