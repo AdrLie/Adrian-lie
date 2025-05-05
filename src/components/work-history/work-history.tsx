@@ -2,17 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Terminal,
-  X,
-  Maximize2,
-  Minimize2,
-  Copy,
-  Check,
-} from "lucide-react";
+import { Terminal, X, Maximize2, Minimize2, Copy, Check } from "lucide-react";
 import { useMobile } from "./hooks/use-mobile";
 
-// Work history data
 const workHistory = [
   {
     role: "Frontend Developer",
@@ -379,6 +371,7 @@ export function WorkHistory() {
 
   return (
     <section
+      id="work-history"
       className={`py-12 md:py-24 bg-zinc-900 text-white ${
         isFullscreen ? "fixed inset-0 z-50" : ""
       }`}

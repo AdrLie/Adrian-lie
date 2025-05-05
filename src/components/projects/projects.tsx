@@ -101,6 +101,8 @@ export function Projects({ fadeIn }: ProjectsProps) {
                 <Image
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
+                  width={500}
+                  height={500}
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
