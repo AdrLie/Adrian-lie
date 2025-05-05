@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  distDir: 'out',
-  trailingSlash: true,
+  distDir: 'export',
 };
 
 export default nextConfig;
