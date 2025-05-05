@@ -10,11 +10,13 @@ import {
   Skills,
   WorkHistory,
 } from "../components";
+import { section } from "framer-motion/client";
 
 const navItems = [
   { name: "Home", section: "hero" },
   { name: "Skills", section: "skills" },
   { name: "Projects", section: "projects" },
+  { name: "Work History", section: "work-history" },
   { name: "Contact", section: "contact" },
 ];
 
@@ -82,7 +84,7 @@ export default function ClientPage() {
       <Hero isLoaded={isLoaded} scrollToSection={scrollToSection} />
       <Skills fadeIn={fadeIn} />
       <Projects fadeIn={fadeIn} />
-      <WorkHistory />
+      {/* <WorkHistory /> */}
       <Contact fadeIn={fadeIn} />
       <Footer />
     </div>

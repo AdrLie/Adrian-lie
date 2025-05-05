@@ -43,7 +43,7 @@ export function Hero({ isLoaded, scrollToSection }: HeroProps) {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="text-xl text-zinc-600 max-w-lg"
             >
-              I&aposm a creative developer with over 3 years of experience making
+              I&apos;m a creative developer with over 3 years of experience making
               modern websites and apps. I enjoy building easy-to-use interfaces
               and reliable backend systems.
             </motion.p>
@@ -108,6 +108,8 @@ export function Hero({ isLoaded, scrollToSection }: HeroProps) {
           >
             <Image
               src="/images/profile-photo.png"
+              width={100}
+              height={100}
               alt="Adrian Lie"
               className="w-72 h-72 object-cover rounded-full shadow-lg border-4 border-emerald-600"
             />
