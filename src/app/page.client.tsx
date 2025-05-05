@@ -1,16 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import {
-  Header,
-  Contact,
-  Footer,
-  Hero,
-  Projects,
-  Skills,
-  WorkHistory,
-} from "../components";
-import { section } from "framer-motion/client";
+import { Header, Contact, Footer, Hero, Projects, Skills } from "../components";
 
 const navItems = [
   { name: "Home", section: "hero" },
